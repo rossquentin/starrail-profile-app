@@ -18,7 +18,7 @@
 	});
 
 	function isValidUser(user: StarRail.User | StarRail.Error): user is StarRail.User {
-		return (user as StarRail.User).player.uid !== undefined;
+		return (user as StarRail.User).player !== undefined;
 	} 
 </script>
 
