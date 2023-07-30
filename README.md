@@ -1,38 +1,34 @@
-# create-svelte
+# Honkai: Star Rail Profile Web Application
 
-Everything you need to build a Svelte project, powered by [`create-svelte`](https://github.com/sveltejs/kit/tree/master/packages/create-svelte).
+Source code of a webapp for displaying profile and character information for Honkai: Star Rail. 
 
-## Creating a project
+Profile details gathered from [mihomo](https://api.mihomo.me/sr_info_parsed/) and images gathered from [StarRailRes](https://github.com/Mar-7th/StarRailRes)
 
-If you're seeing this, you've probably already done this step. Congrats!
+## Project Overview
 
-```bash
-# create a new project in the current directory
-npm create svelte@latest
-
-# create a new project in my-app
-npm create svelte@latest my-app
+```
+starrail-profile-app
+└─ src 
+   └─ lib            Svelte components
+   └─ routes         SvelteKit routes
+   └─ static         Images which aren't dynamically gathered
 ```
 
-## Developing
+## Installation
 
-Once you've created a project and installed dependencies with `npm install` (or `pnpm install` or `yarn`), start a development server:
-
-```bash
-npm run dev
-
-# or start the server and open the app in a new browser tab
-npm run dev -- --open
-```
-
-## Building
-
-To create a production version of your app:
+Clone this git repository
 
 ```bash
-npm run build
+git clone https://github.com/rossquentin/starrail-profile-app.git
 ```
 
-You can preview the production build with `npm run preview`.
+## Contributing
 
-> To deploy your app, you may need to install an [adapter](https://kit.svelte.dev/docs/adapters) for your target environment.
+Pull requests are welcome. For major changes, please open an issue first
+to discuss what you would like to change.
+
+Please make sure to update tests as appropriate.
+
+## License
+
+[MIT](https://choosealicense.com/licenses/mit/)
