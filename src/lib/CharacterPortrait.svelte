@@ -66,8 +66,9 @@
 							src="https://raw.githubusercontent.com/Mar-7th/StarRailRes/master/{eidelon}"
 							alt=""
 						/>
+						<div class="absolute bottom-1/2 right-1/2 translate-x-1/2 translate-y-1/2">
 						<svg
-							class="absolute bottom-1/2 right-1/2 translate-x-1/2 translate-y-1/2"
+							class=""
 							xmlns="http://www.w3.org/2000/svg"
 							width="24"
 							height="24"
@@ -82,6 +83,7 @@
 								stroke-linejoin="round"
 							/>
 						</svg>
+						</div>
 					</div>
 				{/if}
 			{/each}

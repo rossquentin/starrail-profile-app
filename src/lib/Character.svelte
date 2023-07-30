@@ -1,5 +1,6 @@
 <script lang="ts">
 	import { page } from '$app/stores';
+	import html2canvas from 'html2canvas';
 	import CharacterPortrait from './CharacterPortrait.svelte';
 	import CharacterRelics from './CharacterRelics.svelte';
 	import CharacterStats from './CharacterStats.svelte';
@@ -7,18 +8,51 @@
 
 	export let selected: number;
 
-	$: s = selected
+	$: s = selected;
 
 	$: character = $page.data.response.characters[s];
+
+	function download() {
+		document.querySelector('#download-container').style = `
+			background: linear-gradient(0deg, #182534 0%, #2f4845 100%);
+			background-repeat: no-repeat;
+			background-attachment: fixed;
+			border-radius: 0;
+		`;
+
+		html2canvas(document.querySelector('#download-container'), {
+			useCORS: true,
+			allowTaint: true,
+			scale: 4
+		}).then((canvas) => {
+			const a = document.createElement('a');
+			a.href = canvas.toDataURL('image/png');
+			a.download = `${character.name}.png`;
+			a.click();
+			a.remove();
+		});
+
+		document.querySelector('#download-container').style =
+			'theme(colors.slate.700 / 40%); border-radius: theme(borderRadius.3xl);';
+	}
 </script>
 
-<div class="flex flex-col max-w-[calc(100vw-theme(space[2]))] -m-2 p-2 h-scrollable overflow-x-auto overflow-y-hidden">
+<div
+	class="h-scrollable -m-2 flex max-w-[calc(100vw-theme(space[2]))] flex-col overflow-x-auto overflow-y-hidden p-2"
+>
 	<div
-		class="flex flex-row flex-nowrap gap-6 w-fit scroll-inner rounded-3xl overflow-visible bg-slate-700 bg-opacity-40 p-6 shadow-[0_0_0.5rem_0_rgba(0,0,0,0.4)]"
+		id="download-container"
+		class="scroll-inner flex w-fit flex-row flex-nowrap gap-6 overflow-visible rounded-3xl bg-slate-700 bg-opacity-40 p-6 shadow-[0_0_0.5rem_0_rgba(0,0,0,0.4)]"
 	>
 		<CharacterPortrait {character} />
 		<CharacterStats {character} />
 		<CharacterRelics {character} />
+	</div>
+	<div class="p-0">
+		<button
+			class="ml-6 rounded-b bg-blue-500 px-4 py-2 font-bold text-white"
+			on:click={() => download()}>Download</button
+		>
 	</div>
 	<div class="h-scrollable pt-2" />
 </div>
@@ -44,5 +78,5 @@
 		.h-scrollable::-webkit-scrollbar-thumb:hover {
 			background-color: theme(colors.slate.500 / 40%);
 		}
-	} 
+	}
 </style>

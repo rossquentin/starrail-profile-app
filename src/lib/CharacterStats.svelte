@@ -62,8 +62,8 @@
 				alt=""
 			/>
 			<img
-				src={`https://github.com/Mar-7th/StarRailRes/blob/master/icon/deco/Star${character.light_cone.rarity}.png?raw=true`}
-				class="absolute -translate-y-1/2 drop-shadow-[0px_-1px_2px_black] "
+				src={`https://raw.githubusercontent.com/Mar-7th/StarRailRes/master/icon/deco/Star${character.light_cone.rarity}.png?raw=true`}
+				class="absolute  bottom-0 translate-y-1/2 drop-shadow-[0px_-1px_2px_black] "
 				style={`left: calc(50% - ${character.light_cone.rarity}*10%)`}
 				alt=""
 			/>
