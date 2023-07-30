@@ -4,6 +4,10 @@ Source code of a webapp for displaying profile and character information for Hon
 
 Profile details gathered from [mihomo](https://api.mihomo.me/sr_info_parsed/) and images gathered from [StarRailRes](https://github.com/Mar-7th/StarRailRes)
 
+## Live Demo
+
+A live demo can be viewed [here](https://starrail-profile-app.vercel.app/600686831)
+
 ## Project Overview
 
 ```
