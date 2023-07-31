@@ -18,7 +18,7 @@
 					icon: attribute.icon,
 					value: attribute.value + addition.value,
 					display: (attribute.percent
-						? (Math.floor((attribute.value + addition.value) * 1000) / 10).toString() + '%'
+						? (Math.floor((attribute.value + addition.value) * 1000) / 10).toFixed(1) + '%'
 						: Math.floor(attribute.value + addition.value)
 					).toString(),
 					percent: attribute.percent
