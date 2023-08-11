@@ -87,14 +87,13 @@
 				/>
 
 				<!-- Relic Stats -->
-				<div class="flex w-full flex-row gap-2">
+				<div class="flex w-full flex-row gap-1">
 					
-
 					<!-- Sub Stats Left Side -->
-					<div class="flex w-[80px] flex-col gap-[2px]">
+					<div class="flex w-[90px] flex-col gap-[2px]">
 						{#each relic.sub_affix as sub_affix, index}
 							{#if index < 2}
-								<div class="flex flex-row items-center gap-1 rounded-md px-2 -mx-2 transition-all"
+								<div class="flex flex-row items-center gap-1 rounded-md px-1 transition-all"
 								on:mouseenter={onStatHover(sub_affix)}
 								on:mouseleave={onStatHoverEnd}
 								class:bg-slate-800={$hoveredStatName === sub_affix.name}>
@@ -110,10 +109,10 @@
 					</div>
 
 					<!-- Sub Stats Right Side -->
-					<div class="flex w-[80px] flex-col gap-[2px]">
+					<div class="flex w-[90px] flex-col gap-[2px]">
 						{#each relic.sub_affix as sub_affix, index}
 							{#if index >= 2}
-								<div class="flex flex-row items-center gap-1 rounded-md px-2 -mx-2 transition-all"
+								<div class="flex flex-row items-center gap-1 rounded-md px-1 transition-all"
 								on:mouseenter={onStatHover(sub_affix)}
 								on:mouseleave={onStatHoverEnd}
 								class:bg-slate-800={$hoveredStatName === sub_affix.name}>
