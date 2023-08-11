@@ -1,5 +1,6 @@
 <script lang="ts">
 	import Spacer from './Spacer.svelte';
+	import { hoveredStatName } from './stores';
 	export let character: StarRail.Character;
 
 	$: attributes = mergeAdditionAttributes(character.additions, character.attributes);
@@ -9,7 +10,7 @@
 	 * @param additions The addition attributes.
 	 * @param attributes The base attributes.
 	 * @returns The merged attributes.
-	*/
+	 */
 	function mergeAdditionAttributes(
 		additions: StarRail.Attribute[],
 		attributes: StarRail.Attribute[]
@@ -36,12 +37,11 @@
 		return result;
 	}
 
-
 	/**
 	 * Converts a digit from 1 to 5 to a roman numeral.
 	 * @param digit The digit to convert.
 	 * @returns The roman numeral.
-	*/
+	 */
 	function digitToRoman(digit: number) {
 		switch (digit) {
 			case 1:
@@ -63,26 +63,34 @@
 	 * Connverts a promotion level to the maximum level achievable at that promotion.
 	 * @param promotion The promotion level.
 	 * @returns The maximum level achievable at that promotion.
-	*/
+	 */
 	function promotionToMaxLevel(promotion: number) {
 		return 20 + promotion * 10;
+	}
+
+	function onStatHover(attribute: StarRail.Attribute) {
+		hoveredStatName.set(attribute.name);
+	}
+
+	function onStatHoverEnd() {
+		hoveredStatName.set('');
 	}
 </script>
 
 <div class="flex min-w-[400px] max-w-[400px] flex-col gap-2">
 	<!-- Light Cone -->
-	<div class="mb-2 flex  min-w-[75px] flex-row gap-4">
+	<div class="mb-2 flex min-w-[75px] flex-row gap-4">
 		<!-- Image and Rarity -->
 		<div class="relative min-w-[75px]">
 			<img
 				src="https://raw.githubusercontent.com/Mar-7th/StarRailRes/master/{character.light_cone
 					.portrait}"
-				class="w-[75px] "
+				class="w-[75px]"
 				alt=""
 			/>
 			<img
 				src={`https://raw.githubusercontent.com/Mar-7th/StarRailRes/master/icon/deco/Star${character.light_cone.rarity}.png?raw=true`}
-				class="absolute  bottom-0 translate-y-1/2 drop-shadow-[0px_-1px_2px_black] "
+				class="absolute bottom-0 translate-y-1/2 drop-shadow-[0px_-1px_2px_black]"
 				style={`left: calc(50% - ${character.light_cone.rarity}*10%)`}
 				alt=""
 			/>
@@ -97,14 +105,20 @@
 						character.light_cone.promotion
 					)}</span
 				>
-				<span class="font-bold text-orange-300 ml-2">{digitToRoman(character.light_cone.rank)}</span>
+				<span class="ml-2 font-bold text-orange-300">{digitToRoman(character.light_cone.rank)}</span
+				>
 			</div>
 		</div>
 
 		<!-- Attributes -->
 		<div class="ml-auto flex flex-col justify-between">
 			{#each character.light_cone.attributes as attribute}
-				<div class="flex w-[120px] max-w-[120px] flex-row gap-1">
+				<div
+					class="-mx-2 flex w-[130px] max-w-[130px] flex-row gap-1 rounded-md p-1 px-2 transition-all"
+					on:mouseenter={onStatHover(attribute)}
+					on:mouseleave={onStatHoverEnd}
+					class:bg-slate-800={$hoveredStatName === attribute.name}
+				>
 					<img
 						src="https://raw.githubusercontent.com/Mar-7th/StarRailRes/master/{attribute.icon}"
 						class="h-[20px] w-[20px]"
@@ -119,9 +133,14 @@
 	</div>
 
 	<!-- Character Attributes -->
-	<div class="flex flex-col justify-between h-full">
+	<div class="flex h-full flex-col justify-between">
 		{#each attributes as attribute}
-			<div class="flex flex-row items-center gap-1 whitespace-nowrap">
+			<div
+				class="-mx-2 flex flex-row items-center gap-1 whitespace-nowrap rounded-md p-1 px-2 transition-all"
+				on:mouseenter={onStatHover(attribute)}
+				on:mouseleave={onStatHoverEnd}
+				class:bg-slate-800={$hoveredStatName === attribute.name}
+			>
 				<img
 					src="https://raw.githubusercontent.com/Mar-7th/StarRailRes/master/{attribute.icon}"
 					class="h-[20px] w-[20px]"
@@ -137,7 +156,7 @@
 								? character.attributes.find((e) => e.field === attribute.field)?.display
 								: ''}</span
 						>
-						
+
 						<span class=" text-right text-[0.5rem] font-light text-sky-500">
 							{character.additions.find((e) => e.field === attribute.field)
 								? '+' + character.additions.find((e) => e.field === attribute.field)?.display

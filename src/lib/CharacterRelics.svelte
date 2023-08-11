@@ -1,6 +1,7 @@
 <script lang="ts">
 	import LevelChip from './LevelChip.svelte';
 	import Spacer from './Spacer.svelte';
+	import { hoveredStatName } from './stores';
 
 	export let character: StarRail.Character;
 
@@ -25,6 +26,14 @@
 		}
 		return result;
 	}
+
+	function onStatHover(prop: StarRail.Property) {
+		hoveredStatName.set(prop.name);
+	}
+
+	function onStatHoverEnd() {
+		hoveredStatName.set('');
+	}
 </script>
 
 <div class="flex w-fit flex-col gap-4">
@@ -40,23 +49,25 @@
 					class:bg-sky-300={relic.rarity === 3}
 					class:bg-green-300={relic.rarity === 2}
 				/>
-
-				<!-- Relic Icon -->
-				<div class="relative">
-					<img
-						src="https://raw.githubusercontent.com/Mar-7th/StarRailRes/master/{relic.icon}"
-						class="my-auto max-h-[50px] max-w-[50px]"
-						alt=""
-					/>
-					<div class="absolute bottom-0 right-0 -translate-x-1/2">
-						<LevelChip level="+{relic.level}" />
+				<div
+					class="-m-0.5 flex flex-row gap-2 rounded-lg p-0.5 transition-all"
+					on:mouseenter={onStatHover(relic.main_affix)}
+					on:mouseleave={onStatHoverEnd}
+					class:bg-slate-800={$hoveredStatName === relic.main_affix.name}
+				>
+					<!-- Relic Icon -->
+					<div class="relative">
+						<img
+							src="https://raw.githubusercontent.com/Mar-7th/StarRailRes/master/{relic.icon}"
+							class="my-auto max-h-[50px] max-w-[50px]"
+							alt=""
+						/>
+						<div class="absolute bottom-0 right-0 -translate-x-1/2">
+							<LevelChip level="+{relic.level}" />
+						</div>
 					</div>
-				</div>
-
-				<!-- Relic Stats -->
-				<div class="flex w-full flex-row gap-2">
 					<!-- Main Stat -->
-					<div class="flex w-[50px] flex-col">
+					<div class="flex w-[60px] flex-col">
 						<img
 							src="https://raw.githubusercontent.com/Mar-7th/StarRailRes/master/{relic.main_affix
 								.icon}"
@@ -65,21 +76,28 @@
 						/>
 						<span class="text-bold self-end pr-1 text-white">{relic.main_affix.display}</span>
 					</div>
+				</div>
+				<!-- Rarity Border -->
+				<div
+					class="w-[1px] rounded-full opacity-50"
+					class:bg-orange-300={relic.rarity === 5}
+					class:bg-purple-300={relic.rarity === 4}
+					class:bg-sky-300={relic.rarity === 3}
+					class:bg-green-300={relic.rarity === 2}
+				/>
 
-					<!-- Rarity Border -->
-					<div
-						class="w-[1px] rounded-full opacity-50"
-						class:bg-orange-300={relic.rarity === 5}
-						class:bg-purple-300={relic.rarity === 4}
-						class:bg-sky-300={relic.rarity === 3}
-						class:bg-green-300={relic.rarity === 2}
-					/>
+				<!-- Relic Stats -->
+				<div class="flex w-full flex-row gap-2">
+					
 
 					<!-- Sub Stats Left Side -->
-					<div class="flex w-[80px] flex-col">
+					<div class="flex w-[80px] flex-col gap-[2px]">
 						{#each relic.sub_affix as sub_affix, index}
 							{#if index < 2}
-								<div class="flex flex-row items-center gap-1">
+								<div class="flex flex-row items-center gap-1 rounded-md px-2 -mx-2 transition-all"
+								on:mouseenter={onStatHover(sub_affix)}
+								on:mouseleave={onStatHoverEnd}
+								class:bg-slate-800={$hoveredStatName === sub_affix.name}>
 									<img
 										src="https://raw.githubusercontent.com/Mar-7th/StarRailRes/master/{sub_affix.icon}"
 										class="h-250px] w-[25px]"
@@ -92,10 +110,13 @@
 					</div>
 
 					<!-- Sub Stats Right Side -->
-					<div class="flex w-[80px] flex-col">
+					<div class="flex w-[80px] flex-col gap-[2px]">
 						{#each relic.sub_affix as sub_affix, index}
 							{#if index >= 2}
-								<div class="flex flex-row items-center gap-1">
+								<div class="flex flex-row items-center gap-1 rounded-md px-2 -mx-2 transition-all"
+								on:mouseenter={onStatHover(sub_affix)}
+								on:mouseleave={onStatHoverEnd}
+								class:bg-slate-800={$hoveredStatName === sub_affix.name}>
 									<img
 										src="https://raw.githubusercontent.com/Mar-7th/StarRailRes/master/{sub_affix.icon}"
 										class="h-[25px] w-[25px]"
