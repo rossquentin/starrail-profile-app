@@ -5,9 +5,12 @@
 	$: player = <StarRail.Player>$page.data.response.player;
 </script>
 
+<!-- Small screens or larger -->
 <div
 	class="hidden flex-row gap-4 rounded-3xl bg-slate-700 bg-opacity-40 p-6 shadow-[0_0_0.5rem_0_rgba(0,0,0,0.4)] sm:flex"
 >
+
+	<!-- Profile Picture -->
 	<div class="relative h-auto w-[75px]">
 		<img
 			class="absolute bottom-1/2 translate-y-1/2 rounded-full bg-slate-800 outline outline-4 outline-slate-500"
@@ -15,6 +18,8 @@
 			alt=""
 		/>
 	</div>
+
+	<!-- Profile Info -->
 	<div class="flex flex-col p-0">
 		<div class="flex flex-row">
 			<span class="text-xl font-semibold text-white">{player.nickname}</span>
@@ -37,14 +42,20 @@
 	</div>
 </div>
 
+
+<!-- Less than small screens -->
 <div
 	class="flex w-fit flex-col items-center gap-4 rounded-3xl bg-slate-700 bg-opacity-40 p-6 shadow-[0_0_0.5rem_0_rgba(0,0,0,0.4)] sm:hidden"
 >
+
+	<!-- Profile Picture -->
 	<img
 		class="w-[75px] rounded-full bg-slate-800 outline outline-4 outline-slate-500"
 		src="https://raw.githubusercontent.com/Mar-7th/StarRailRes/master/{player.avatar.icon}"
 		alt=""
 	/>
+
+	<!-- Profile Info -->
 	<div class="flex flex-col p-0 gap-4">
 		<div class="flex flex-col">
 			<span class="text-center text-xl font-semibold text-white">{player.nickname}</span>

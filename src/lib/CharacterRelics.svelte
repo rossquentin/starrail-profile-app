@@ -6,8 +6,11 @@
 
 	$: relic_sets = removeDuplicates(character.relic_sets);
 
-	//Current set has duplicates with set.num of 2 and 4 occasionally. Want to collapse to having the set with only 4 while keeping the non duplicates
-
+	/**
+	 * Remove duplicate relic sets and keeps the one with the highest number of relics.
+	 * @param relic_sets The relic sets to remove duplicates from.
+	 * @returns The relic sets without duplicates.
+	 */
 	function removeDuplicates(relic_sets: StarRail.RelicSet[]): StarRail.RelicSet[] {
 		const result: StarRail.RelicSet[] = [];
 		for (const relic_set of relic_sets) {
@@ -25,9 +28,11 @@
 </script>
 
 <div class="flex w-fit flex-col gap-4">
+	<!-- Relics -->
 	<div class="flex flex-col gap-4">
 		{#each character.relics as relic}
 			<div class="flex flex-row gap-4">
+				<!-- Rarity Border -->
 				<div
 					class="w-[2px] rounded-full"
 					class:bg-orange-300={relic.rarity === 5}
@@ -35,6 +40,8 @@
 					class:bg-sky-300={relic.rarity === 3}
 					class:bg-green-300={relic.rarity === 2}
 				/>
+
+				<!-- Relic Icon -->
 				<div class="relative">
 					<img
 						src="https://raw.githubusercontent.com/Mar-7th/StarRailRes/master/{relic.icon}"
@@ -46,7 +53,9 @@
 					</div>
 				</div>
 
+				<!-- Relic Stats -->
 				<div class="flex w-full flex-row gap-2">
+					<!-- Main Stat -->
 					<div class="flex w-[50px] flex-col">
 						<img
 							src="https://raw.githubusercontent.com/Mar-7th/StarRailRes/master/{relic.main_affix
@@ -56,6 +65,8 @@
 						/>
 						<span class="text-bold self-end pr-1 text-white">{relic.main_affix.display}</span>
 					</div>
+
+					<!-- Rarity Border -->
 					<div
 						class="w-[1px] rounded-full opacity-50"
 						class:bg-orange-300={relic.rarity === 5}
@@ -63,6 +74,8 @@
 						class:bg-sky-300={relic.rarity === 3}
 						class:bg-green-300={relic.rarity === 2}
 					/>
+
+					<!-- Sub Stats Left Side -->
 					<div class="flex w-[80px] flex-col">
 						{#each relic.sub_affix as sub_affix, index}
 							{#if index < 2}
@@ -78,6 +91,7 @@
 						{/each}
 					</div>
 
+					<!-- Sub Stats Right Side -->
 					<div class="flex w-[80px] flex-col">
 						{#each relic.sub_affix as sub_affix, index}
 							{#if index >= 2}
@@ -96,11 +110,14 @@
 			</div>
 		{/each}
 	</div>
+
+	<!-- Relic Sets -->
 	<div class="flex flex-col gap-2">
 		{#each relic_sets as set, index}
 			<div class="flex flex-row gap-2">
+				<span class="whitespace-nowrap text-slate-400">{set.name}</span>
+				<Spacer direction="h" />
 				<span class="text-sky-500">{set.num}</span>
-				<span class="text-slate-400">{set.name}</span>
 			</div>
 		{/each}
 	</div>

@@ -2,19 +2,28 @@
 	import LevelChip from './LevelChip.svelte';
 	export let character: StarRail.Character;
 
+	/**
+	 * Connverts a promotion level to the maximum level achievable at that promotion.
+	 * @param promotion The promotion level.
+	 * @returns The maximum level achievable at that promotion.
+	*/
 	function promotionToMaxLevel(promotion: number) {
 		return 20 + promotion * 10;
 	}
 </script>
 
 <div class="flex flex-col">
+	<!-- Character Basic Stats -->
 	<div class="flex max-h-[450px] max-w-[450px] flex-row">
+		<!-- Name and Level-->
 		<div class="flex flex-col">
 			<span class="text-lg font-bold text-white">{character.name}</span>
 			<span class="flex-nowrap text-slate-400"
 				>Level {character.level}/{promotionToMaxLevel(character.promotion)}</span
 			>
 		</div>
+
+		<!-- Skills -->
 		<div class="ml-auto flex flex-row gap-6">
 			{#each character.skills as skill, index (skill.id)}
 				{#if index < 4}
@@ -35,15 +44,22 @@
 			{/each}
 		</div>
 	</div>
+
+	<!-- Character Portrait and Eidelons -->
 	<div class="relative">
+
+		<!-- Portrait -->
 		<img
 			class="max-h-[450px] max-w-[450px]"
 			src="https://raw.githubusercontent.com/Mar-7th/StarRailRes/master/{character.portrait}"
 			alt=""
 		/>
+
+		<!-- Eidelons -->
 		<div class="absolute bottom-1/2 translate-y-1/2">
 			{#each character.rank_icons as eidelon, index (index)}
 				{#if index < character.rank}
+					<!-- Unlocked -->
 					<div
 						class="relative my-4 rounded-full border-2 border-slate-400 bg-slate-800"
 						style={`left:  max(calc(10*${index + 1}px - 35px), -1*calc(10*${index + 1}px - 35px))`}
@@ -56,6 +72,7 @@
 						/>
 					</div>
 				{:else}
+					<!-- Locked -->
 					<div
 						class="relative my-4 rounded-full border-2 border-slate-600 border-opacity-100 bg-slate-800"
 						style={`left:  max(calc(10*${index + 1}px - 35px), -1*calc(10*${index + 1}px - 35px))`}

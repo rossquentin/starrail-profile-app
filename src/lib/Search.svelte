@@ -3,7 +3,12 @@
 	import { page } from '$app/stores';
 	
 	let search: string = $page.url.pathname.slice(1);
-	let searchUID = (search: string) => {
+
+	/**
+	 * Searches for a UID and navigates to the page.
+	 * @param search The UID to search for.
+	*/
+	function searchUID(search: string) {
 		if (isNaN(Number(search)) || Number(search) < 100000000 || Number(search) > 999999999) {
 			alert('UID must be a 9-digit number.');
 			return;

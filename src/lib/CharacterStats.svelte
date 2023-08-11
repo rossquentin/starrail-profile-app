@@ -4,6 +4,12 @@
 
 	$: attributes = mergeAdditionAttributes(character.additions, character.attributes);
 
+	/**
+	 * Merges the addition attributes with the base attributes.
+	 * @param additions The addition attributes.
+	 * @param attributes The base attributes.
+	 * @returns The merged attributes.
+	*/
 	function mergeAdditionAttributes(
 		additions: StarRail.Attribute[],
 		attributes: StarRail.Attribute[]
@@ -30,6 +36,12 @@
 		return result;
 	}
 
+
+	/**
+	 * Converts a digit from 1 to 5 to a roman numeral.
+	 * @param digit The digit to convert.
+	 * @returns The roman numeral.
+	*/
 	function digitToRoman(digit: number) {
 		switch (digit) {
 			case 1:
@@ -47,13 +59,20 @@
 		}
 	}
 
+	/**
+	 * Connverts a promotion level to the maximum level achievable at that promotion.
+	 * @param promotion The promotion level.
+	 * @returns The maximum level achievable at that promotion.
+	*/
 	function promotionToMaxLevel(promotion: number) {
 		return 20 + promotion * 10;
 	}
 </script>
 
 <div class="flex min-w-[400px] max-w-[400px] flex-col gap-2">
+	<!-- Light Cone -->
 	<div class="mb-2 flex  min-w-[75px] flex-row gap-4">
+		<!-- Image and Rarity -->
 		<div class="relative min-w-[75px]">
 			<img
 				src="https://raw.githubusercontent.com/Mar-7th/StarRailRes/master/{character.light_cone
@@ -68,6 +87,8 @@
 				alt=""
 			/>
 		</div>
+
+		<!-- Name, Level, and Superimposition -->
 		<div class="flex flex-col">
 			<span class="text-lg font-bold text-white">{character.light_cone.name}</span>
 			<div>
@@ -79,6 +100,8 @@
 				<span class="font-bold text-orange-300 ml-2">{digitToRoman(character.light_cone.rank)}</span>
 			</div>
 		</div>
+
+		<!-- Attributes -->
 		<div class="ml-auto flex flex-col justify-between">
 			{#each character.light_cone.attributes as attribute}
 				<div class="flex w-[120px] max-w-[120px] flex-row gap-1">
@@ -95,6 +118,7 @@
 		</div>
 	</div>
 
+	<!-- Character Attributes -->
 	<div class="flex flex-col justify-between h-full">
 		{#each attributes as attribute}
 			<div class="flex flex-row items-center gap-1 whitespace-nowrap">

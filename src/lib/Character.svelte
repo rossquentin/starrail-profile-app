@@ -12,6 +12,9 @@
 
 	$: character = $page.data.response.characters[s];
 
+	/**
+	 * Downloads the contents of the download container as a png.
+	*/
 	function download() {
 		document.querySelector('#download-container').style = `
 			background: linear-gradient(0deg, #182534 0%, #2f4845 100%);
@@ -54,7 +57,9 @@
 			on:click={() => download()}>Download</button
 		>
 	</div>
-	<div class="h-scrollable pt-2" />
+
+	<!-- Gap for scrollbar -->
+	<div class="pt-2" />
 </div>
 
 <style lang="postcss">

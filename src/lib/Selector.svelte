@@ -6,7 +6,6 @@
 </script>
 
 <div class="flex flex-row gap-4">
-	<!-- svelte-ignore empty-block -->
 	{#each characters as character, index (character.id)}
 		<div class="relative" on:click={() => (selected = index)} role="button">
 			<img
