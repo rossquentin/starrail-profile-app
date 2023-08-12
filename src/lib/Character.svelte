@@ -1,4 +1,5 @@
 <script lang="ts">
+	import { selected } from '$lib/stores';
 	import { page } from '$app/stores';
 	import html2canvas from 'html2canvas';
 	import CharacterPortrait from './CharacterPortrait.svelte';
@@ -6,11 +7,7 @@
 	import CharacterStats from './CharacterStats.svelte';
 	import Spacer from './Spacer.svelte';
 
-	export let selected: number;
-
-	$: s = selected;
-
-	$: character = $page.data.response.characters[s];
+	$: character = $page.data.response.characters[$selected];
 
 	/**
 	 * Downloads the contents of the download container as a png.

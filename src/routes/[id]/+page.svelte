@@ -7,7 +7,6 @@
 	import { navigating } from '$app/stores';
 
 	export let data: PageData;
-	let selected = 0;
 
 	setDefaultOptions({
 		transition: 'fade',
@@ -33,10 +32,10 @@
 				<Profile />
 			</div>
 			<div use:reveal>
-				<Selector bind:selected />
+				<Selector />
 			</div>
 			<div use:reveal>
-				<Character {selected} />
+				<Character />
 			</div>
 		{/if}
 	{/if}

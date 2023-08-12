@@ -1,4 +1,5 @@
 <script lang="ts">
+	import { selected } from '$lib/stores';
 	import { goto } from '$app/navigation';
 	import { page } from '$app/stores';
 	
@@ -13,6 +14,7 @@
 			alert('UID must be a 9-digit number.');
 			return;
 		}
+		selected.set(0);
 		goto(`/${search}`);
 	}
 </script>
