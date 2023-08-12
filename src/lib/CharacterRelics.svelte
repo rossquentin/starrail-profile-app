@@ -40,7 +40,7 @@
 	<!-- Relics -->
 	<div class="flex flex-col gap-4">
 		{#each character.relics as relic}
-			<div class="flex flex-row gap-4">
+			<div class="flex flex-row gap-2">
 				<!-- Rarity Border -->
 				<div
 					class="w-[2px] rounded-full"
@@ -87,7 +87,7 @@
 				/>
 
 				<!-- Relic Stats -->
-				<div class="flex w-full flex-row gap-1">
+				<div class="flex w-full flex-row gap-1 -ml-1">
 					
 					<!-- Sub Stats Left Side -->
 					<div class="flex w-[90px] flex-col gap-[2px]">
@@ -135,9 +135,9 @@
 	<div class="flex flex-col gap-2">
 		{#each relic_sets as set, index}
 			<div class="flex flex-row gap-2">
-				<span class="whitespace-nowrap text-slate-400">{set.name}</span>
+				<span class="whitespace-nowrap text-slate-400 text-sm self-center">{set.name}</span>
 				<Spacer direction="h" />
-				<span class="text-sky-500">{set.num}</span>
+				<span class="text-sky-500 self-center">{set.num}</span>
 			</div>
 		{/each}
 	</div>
