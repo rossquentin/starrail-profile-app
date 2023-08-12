@@ -1,5 +1,6 @@
 <script lang="ts">
 	import Spacer from './Spacer.svelte';
+	import { onStatHover, onStatHoverEnd, digitToRoman, promotionToMaxLevel } from '../utils/utils';
 	import { hoveredStatName } from './stores';
 	export let character: StarRail.Character;
 
@@ -37,44 +38,8 @@
 		return result;
 	}
 
-	/**
-	 * Converts a digit from 1 to 5 to a roman numeral.
-	 * @param digit The digit to convert.
-	 * @returns The roman numeral.
-	 */
-	function digitToRoman(digit: number) {
-		switch (digit) {
-			case 1:
-				return 'I';
-			case 2:
-				return 'II';
-			case 3:
-				return 'III';
-			case 4:
-				return 'IV';
-			case 5:
-				return 'V';
-			default:
-				return '';
-		}
-	}
+	
 
-	/**
-	 * Connverts a promotion level to the maximum level achievable at that promotion.
-	 * @param promotion The promotion level.
-	 * @returns The maximum level achievable at that promotion.
-	 */
-	function promotionToMaxLevel(promotion: number) {
-		return 20 + promotion * 10;
-	}
-
-	function onStatHover(attribute: StarRail.Attribute) {
-		hoveredStatName.set(attribute.name);
-	}
-
-	function onStatHoverEnd() {
-		hoveredStatName.set('');
-	}
 </script>
 
 <div class="flex min-w-[400px] max-w-[400px] flex-col gap-2">

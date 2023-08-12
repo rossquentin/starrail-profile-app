@@ -1,15 +1,7 @@
 <script lang="ts">
 	import LevelChip from './LevelChip.svelte';
+	import { promotionToMaxLevel } from '../utils/utils';
 	export let character: StarRail.Character;
-
-	/**
-	 * Connverts a promotion level to the maximum level achievable at that promotion.
-	 * @param promotion The promotion level.
-	 * @returns The maximum level achievable at that promotion.
-	*/
-	function promotionToMaxLevel(promotion: number) {
-		return 20 + promotion * 10;
-	}
 </script>
 
 <div class="flex flex-col">
@@ -47,7 +39,6 @@
 
 	<!-- Character Portrait and Eidelons -->
 	<div class="relative">
-
 		<!-- Portrait -->
 		<img
 			class="max-h-[450px] max-w-[450px]"
@@ -84,22 +75,22 @@
 							alt=""
 						/>
 						<div class="absolute bottom-1/2 right-1/2 translate-x-1/2 translate-y-1/2">
-						<svg
-							class=""
-							xmlns="http://www.w3.org/2000/svg"
-							width="24"
-							height="24"
-							stroke-width="2"
-							fill="none"
-						>
-							<path
+							<svg
+								class=""
 								xmlns="http://www.w3.org/2000/svg"
-								d="M16 12H17.4C17.7314 12 18 12.2686 18 12.6V19.4C18 19.7314 17.7314 20 17.4 20H6.6C6.26863 20 6 19.7314 6 19.4V12.6C6 12.2686 6.26863 12 6.6 12H8M16 12V8C16 6.66667 15.2 4 12 4C8.8 4 8 6.66667 8 8V12M16 12H8"
-								stroke="white"
-								stroke-linecap="round"
-								stroke-linejoin="round"
-							/>
-						</svg>
+								width="24"
+								height="24"
+								stroke-width="2"
+								fill="none"
+							>
+								<path
+									xmlns="http://www.w3.org/2000/svg"
+									d="M16 12H17.4C17.7314 12 18 12.2686 18 12.6V19.4C18 19.7314 17.7314 20 17.4 20H6.6C6.26863 20 6 19.7314 6 19.4V12.6C6 12.2686 6.26863 12 6.6 12H8M16 12V8C16 6.66667 15.2 4 12 4C8.8 4 8 6.66667 8 8V12M16 12H8"
+									stroke="white"
+									stroke-linecap="round"
+									stroke-linejoin="round"
+								/>
+							</svg>
 						</div>
 					</div>
 				{/if}

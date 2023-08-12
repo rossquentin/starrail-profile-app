@@ -2,6 +2,7 @@
 	import LevelChip from './LevelChip.svelte';
 	import Spacer from './Spacer.svelte';
 	import { hoveredStatName } from './stores';
+	import { onStatHover, onStatHoverEnd } from '../utils/utils';
 
 	export let character: StarRail.Character;
 
@@ -25,14 +26,6 @@
 			}
 		}
 		return result;
-	}
-
-	function onStatHover(prop: StarRail.Property) {
-		hoveredStatName.set(prop.name);
-	}
-
-	function onStatHoverEnd() {
-		hoveredStatName.set('');
 	}
 </script>
 
@@ -87,16 +80,17 @@
 				/>
 
 				<!-- Relic Stats -->
-				<div class="flex w-full flex-row gap-1 -ml-1">
-					
+				<div class="-ml-1 flex w-full flex-row gap-1">
 					<!-- Sub Stats Left Side -->
 					<div class="flex w-[90px] flex-col gap-[2px]">
 						{#each relic.sub_affix as sub_affix, index}
 							{#if index < 2}
-								<div class="flex flex-row items-center gap-1 rounded-md px-1 transition-all"
-								on:mouseenter={onStatHover(sub_affix)}
-								on:mouseleave={onStatHoverEnd}
-								class:bg-slate-800={$hoveredStatName === sub_affix.name}>
+								<div
+									class="flex flex-row items-center gap-1 rounded-md px-1 transition-all"
+									on:mouseenter={onStatHover(sub_affix)}
+									on:mouseleave={onStatHoverEnd}
+									class:bg-slate-800={$hoveredStatName === sub_affix.name}
+								>
 									<img
 										src="https://raw.githubusercontent.com/Mar-7th/StarRailRes/master/{sub_affix.icon}"
 										class="h-250px] w-[25px]"
@@ -112,10 +106,12 @@
 					<div class="flex w-[90px] flex-col gap-[2px]">
 						{#each relic.sub_affix as sub_affix, index}
 							{#if index >= 2}
-								<div class="flex flex-row items-center gap-1 rounded-md px-1 transition-all"
-								on:mouseenter={onStatHover(sub_affix)}
-								on:mouseleave={onStatHoverEnd}
-								class:bg-slate-800={$hoveredStatName === sub_affix.name}>
+								<div
+									class="flex flex-row items-center gap-1 rounded-md px-1 transition-all"
+									on:mouseenter={onStatHover(sub_affix)}
+									on:mouseleave={onStatHoverEnd}
+									class:bg-slate-800={$hoveredStatName === sub_affix.name}
+								>
 									<img
 										src="https://raw.githubusercontent.com/Mar-7th/StarRailRes/master/{sub_affix.icon}"
 										class="h-[25px] w-[25px]"
@@ -135,9 +131,9 @@
 	<div class="flex flex-col gap-2">
 		{#each relic_sets as set, index}
 			<div class="flex flex-row gap-2">
-				<span class="whitespace-nowrap text-slate-400 text-sm self-center">{set.name}</span>
+				<span class="self-center whitespace-nowrap text-sm text-slate-400">{set.name}</span>
 				<Spacer direction="h" />
-				<span class="text-sky-500 self-center">{set.num}</span>
+				<span class="self-center text-sky-500">{set.num}</span>
 			</div>
 		{/each}
 	</div>
