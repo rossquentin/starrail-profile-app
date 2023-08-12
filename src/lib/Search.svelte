@@ -25,6 +25,7 @@
 		placeholder="Enter UID..."
 		bind:value={search}
 		class="text-medium h-10 w-48 rounded-full bg-slate-200 p-5  focus:outline-none"
+		autofocus={true}
 	/>
 	<button type="submit" class="absolute right-0 top-0 mr-4 mt-3">
 		<svg
