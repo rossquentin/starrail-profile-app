@@ -1,4 +1,4 @@
-import { hoveredStatName } from '../lib/stores';
+import { hoveredStatName } from '../stores';
 
 /**
  * Connverts a promotion level to the maximum level achievable at that promotion.

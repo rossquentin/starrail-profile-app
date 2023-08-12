@@ -2,7 +2,7 @@
 	import LevelChip from './LevelChip.svelte';
 	import Spacer from './Spacer.svelte';
 	import { hoveredStatName } from './stores';
-	import { onStatHover, onStatHoverEnd } from '../utils/utils';
+	import { onStatHover, onStatHoverEnd } from '$lib/utils/utils';
 
 	export let character: StarRail.Character;
 

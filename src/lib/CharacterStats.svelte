@@ -1,6 +1,6 @@
 <script lang="ts">
 	import Spacer from './Spacer.svelte';
-	import { onStatHover, onStatHoverEnd, digitToRoman, promotionToMaxLevel } from '../utils/utils';
+	import { onStatHover, onStatHoverEnd, digitToRoman, promotionToMaxLevel } from '$lib/utils/utils';
 	import { hoveredStatName } from './stores';
 	export let character: StarRail.Character;
 
