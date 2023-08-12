@@ -1,6 +1,6 @@
 <script lang="ts">
 	import Spacer from './Spacer.svelte';
-	import { digitToRoman, promotionToMaxLevel } from '../utils/utils';
+	import { onStatHover, onStatHoverEnd, digitToRoman, promotionToMaxLevel } from '../utils/utils';
 	import { hoveredStatName } from './stores';
 	export let character: StarRail.Character;
 
@@ -80,8 +80,8 @@
 			{#each character.light_cone.attributes as attribute}
 				<div
 					class="-mx-2 flex w-[130px] max-w-[130px] flex-row gap-1 rounded-md p-1 px-2 transition-all"
-					on:mouseenter={hoveredStatName.set(attribute.name)}
-					on:mouseleave={hoveredStatName.set('')}
+					on:mouseenter={onStatHover(attribute)}
+					on:mouseleave={onStatHoverEnd}
 					class:bg-slate-800={$hoveredStatName === attribute.name}
 				>
 					<img
@@ -102,8 +102,8 @@
 		{#each attributes as attribute}
 			<div
 				class="-mx-2 flex flex-row items-center gap-1 whitespace-nowrap rounded-md p-1 px-2 transition-all"
-				on:mouseenter={hoveredStatName.set(attribute.name)}
-				on:mouseleave={hoveredStatName.set('')}
+				on:mouseenter={onStatHover(attribute)}
+				on:mouseleave={onStatHoverEnd}
 				class:bg-slate-800={$hoveredStatName === attribute.name}
 			>
 				<img

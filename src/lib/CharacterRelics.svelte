@@ -2,6 +2,7 @@
 	import LevelChip from './LevelChip.svelte';
 	import Spacer from './Spacer.svelte';
 	import { hoveredStatName } from './stores';
+	import { onStatHover, onStatHoverEnd } from '../utils/utils';
 
 	export let character: StarRail.Character;
 
@@ -43,8 +44,8 @@
 				/>
 				<div
 					class="-m-0.5 flex flex-row gap-2 rounded-lg p-0.5 transition-all"
-					on:mouseenter={hoveredStatName.set(relic.main_affix.name)}
-					on:mouseleave={hoveredStatName.set('')}
+					on:mouseenter={onStatHover(relic.main_affix)}
+					on:mouseleave={onStatHoverEnd}
 					class:bg-slate-800={$hoveredStatName === relic.main_affix.name}
 				>
 					<!-- Relic Icon -->
@@ -86,8 +87,8 @@
 							{#if index < 2}
 								<div
 									class="flex flex-row items-center gap-1 rounded-md px-1 transition-all"
-									on:mouseenter={hoveredStatName.set(sub_affix.name)}
-									on:mouseleave={hoveredStatName.set('')}
+									on:mouseenter={onStatHover(sub_affix)}
+									on:mouseleave={onStatHoverEnd}
 									class:bg-slate-800={$hoveredStatName === sub_affix.name}
 								>
 									<img
@@ -107,8 +108,8 @@
 							{#if index >= 2}
 								<div
 									class="flex flex-row items-center gap-1 rounded-md px-1 transition-all"
-									on:mouseenter={hoveredStatName.set(sub_affix.name)}
-									on:mouseleave={hoveredStatName.set('')}
+									on:mouseenter={onStatHover(sub_affix)}
+									on:mouseleave={onStatHoverEnd}
 									class:bg-slate-800={$hoveredStatName === sub_affix.name}
 								>
 									<img

@@ -8,6 +8,15 @@ import { hoveredStatName } from '../lib/stores';
 export function promotionToMaxLevel(promotion: number) {
 	return 20 + promotion * 10;
 }
+
+export function onStatHover(prop: StarRail.Property) {
+	hoveredStatName.set(prop.name);
+}
+
+export function onStatHoverEnd() {
+	hoveredStatName.set('');
+}
+
 /**
  * Converts a digit from 1 to 5 to a roman numeral.
  * @param digit The digit to convert.
