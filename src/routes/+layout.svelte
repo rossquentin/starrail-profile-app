@@ -26,8 +26,14 @@
 	:global(*) {
 		font-family: 'Inter', sans-serif;
 		font-weight: 500;
+
+		/* Disable user-select and drag */
+		-webkit-user-select: none; /* Safari */
+ 		-ms-user-select: none; /* IE 10 and IE 11 */
+ 		user-select: none; /* Standard syntax */
+		-webkit-user-drag: none;
 	}
-	:global(*::before, ::after) {
+	:global(*::before, *::after) {
 		box-sizing: border-box;
 	}
 </style>
