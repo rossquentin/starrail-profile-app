@@ -1,6 +1,6 @@
 <script lang="ts">
 	import LevelChip from './LevelChip.svelte';
-	import { promotionToMaxLevel } from '../utils/utils';
+	import { promotionToMaxLevel } from '$lib/utils/utils';
 	export let character: StarRail.Character;
 </script>
 
