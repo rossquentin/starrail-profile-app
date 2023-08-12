@@ -14,6 +14,9 @@
 			alert('UID must be a 9-digit number.');
 			return;
 		}
+
+		if (search === $page.url.pathname.slice(1)) return; // Don't navigate if the UID is the same.
+
 		selected.set(0);
 		goto(`/${search}`);
 	}
