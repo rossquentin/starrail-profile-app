@@ -1,5 +1,5 @@
 <script lang="ts">
-	export let level: string;
+	export let level: string | number;
 </script>
 
 <div
