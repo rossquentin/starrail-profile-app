@@ -10,17 +10,22 @@
 	 * Downloads the contents of the download container as a png.
 	 */
 	function download() {
-		document.querySelector('#download-container').style = `
+		(document.querySelector('#download-container') as HTMLDivElement).style = `
 			background: linear-gradient(0deg, #182534 0%, #2f4845 100%);
 			background-repeat: no-repeat;
 			background-attachment: fixed;
 			border-radius: 0;
+
 		`;
 
-		html2canvas(document.querySelector('#download-container'), {
+		html2canvas(document.querySelector('#download-container') as HTMLDivElement, {
 			useCORS: true,
 			allowTaint: true,
-			scale: 4
+			scale: 4,
+			scrollX: 0,
+			scrollY: 0,
+			windowHeight: window.innerHeight,
+			windowWidth: window.innerWidth
 		}).then((canvas) => {
 			const a = document.createElement('a');
 			a.href = canvas.toDataURL('image/png');
@@ -34,9 +39,7 @@
 	}
 </script>
 
-<div
-	class="h-scrollable -m-2 flex max-w-[calc(100vw-theme(space[2]))] flex-col overflow-x-auto overflow-y-hidden p-2"
->
+<div class="h-scrollable -m-2 flex max-w-[100vw] flex-col overflow-x-auto overflow-y-hidden p-2">
 	<div
 		id="download-container"
 		class="scroll-inner flex w-fit flex-row flex-nowrap gap-6 overflow-visible rounded-3xl bg-slate-700 bg-opacity-40 p-6 shadow-[0_0_0.5rem_0_rgba(0,0,0,0.4)]"

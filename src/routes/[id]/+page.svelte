@@ -5,11 +5,7 @@
 	import Profile from '$lib/Profile.svelte';
 	import Selector from '$lib/Selector.svelte';
 	import Character from '$lib/Character.svelte';
-	import type { PageData } from './$types';
-	import { navigating } from '$app/stores';
-
-	export let data: PageData;
-
+	
 	setDefaultOptions({
 		transition: 'fade',
 		duration: 1000,

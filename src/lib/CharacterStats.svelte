@@ -52,7 +52,7 @@
 			/>
 			<img
 				src={`https://raw.githubusercontent.com/Mar-7th/StarRailRes/master/icon/deco/Star${character.light_cone.rarity}.png?raw=true`}
-				class="absolute bottom-0 translate-y-1/2 drop-shadow-[0px_-1px_2px_black]"
+				class="absolute bottom-[1px] translate-y-1/2 drop-shadow-[0px_-1.5px_1px_black]"
 				style={`left: calc(50% - ${character.light_cone.rarity}*10%)`}
 				alt=""
 			/>
@@ -119,7 +119,7 @@
 								: ''}</span
 						>
 
-						<span class=" text-right text-[0.5rem] font-light text-sky-500">
+						<span class=" text-right text-[0.5rem] font-light text-amber-300">
 							{character.additions.find((e) => e.field === attribute.field)
 								? '+' + character.additions.find((e) => e.field === attribute.field)?.display
 								: ''}</span
