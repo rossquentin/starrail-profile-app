@@ -46,6 +46,7 @@
 				transform: 'scale(2)',
 				transformOrigin: 'top left',
 				borderRadius: '0',
+				fontFamily: 'Inter, sans-serif'
 			}
 		})
 			.then((dataUrl) => {
