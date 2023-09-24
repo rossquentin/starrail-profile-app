@@ -1,5 +1,5 @@
 <script lang="ts">
-	import html2canvas from 'html2canvas';
+	import domtoimage from 'dom-to-image';
 	import CharacterPortrait from './CharacterPortrait.svelte';
 	import CharacterRelics from './CharacterRelics.svelte';
 	import CharacterStats from './CharacterStats.svelte';
@@ -10,7 +10,7 @@
 	 * Downloads the contents of the download container as a png.
 	 */
 	function download() {
-		(document.querySelector('#download-container') as HTMLDivElement).style = `
+		/* (document.querySelector('#download-container') as HTMLDivElement).style = `
 			background: linear-gradient(0deg, #182534 0%, #2f4845 100%);
 			background-repeat: no-repeat;
 			background-attachment: fixed;
@@ -35,7 +35,26 @@
 		});
 
 		document.querySelector('#download-container').style =
-			'theme(colors.slate.700 / 40%); border-radius: theme(borderRadius.3xl);';
+			'theme(colors.slate.700 / 40%); border-radius: theme(borderRadius.3xl);'; */
+
+		let node = document.querySelector('#download-container') as HTMLDivElement;
+
+		domtoimage.toPng(node, {
+			width: Math.floor(node.clientWidth * 2),
+			height: Math.floor(node.clientHeight * 2),
+			style: {
+				transform: 'scale(2)',
+				transformOrigin: 'top left',
+				borderRadius: '0',
+			}
+		})
+			.then((dataUrl) => {
+				const link = document.createElement('a');
+				link.download = `${character.name}.png`;
+				link.href = dataUrl;
+				link.click();
+				link.remove();
+			})
 	}
 </script>
 
