@@ -15,7 +15,7 @@ starrail-profile-app
 └─ src 
    └─ lib            Svelte components
    └─ routes         SvelteKit routes
-   └─ static         Images which aren't dynamically gathered
+└─ static            Images which aren't dynamically gathered
 ```
 
 ## Installation
