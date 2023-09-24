@@ -1,17 +1,14 @@
 <script lang="ts">
-	import { selected } from '$lib/stores';
-	import { page } from '$app/stores';
 	import html2canvas from 'html2canvas';
 	import CharacterPortrait from './CharacterPortrait.svelte';
 	import CharacterRelics from './CharacterRelics.svelte';
 	import CharacterStats from './CharacterStats.svelte';
-	import Spacer from './Spacer.svelte';
 
-	$: character = $page.data.response.characters[$selected];
+	export let character: StarRail.Character;
 
 	/**
 	 * Downloads the contents of the download container as a png.
-	*/
+	 */
 	function download() {
 		document.querySelector('#download-container').style = `
 			background: linear-gradient(0deg, #182534 0%, #2f4845 100%);

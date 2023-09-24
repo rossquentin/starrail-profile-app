@@ -1,5 +1,5 @@
 <script lang="ts">
-	import Spacer from "./Spacer.svelte";
+	import Spacer from './Spacer.svelte';
 	export let label = 'UNDEFINED LABEL';
 	export let value = 'UNKNOWN VALUE';
 </script>
@@ -8,7 +8,7 @@
 	<span class="my-auto whitespace-nowrap text-sm text-slate-400">
 		{label}
 	</span>
-	<Spacer direction={"h"} />
+	<Spacer direction={'h'} />
 	<span class=" my-autofont-bold text-white">
 		{value}
 	</span>

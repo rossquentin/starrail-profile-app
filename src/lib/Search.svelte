@@ -2,13 +2,13 @@
 	import { selected } from '$lib/stores';
 	import { goto } from '$app/navigation';
 	import { page } from '$app/stores';
-	
+
 	let search: string = $page.url.pathname.slice(1);
 
 	/**
 	 * Searches for a UID and navigates to the page.
 	 * @param search The UID to search for.
-	*/
+	 */
 	function searchUID(search: string) {
 		if (isNaN(Number(search)) || Number(search) < 100000000 || Number(search) > 999999999) {
 			alert('UID must be a 9-digit number.');
@@ -29,12 +29,12 @@
 		maxlength="9"
 		placeholder="Enter UID..."
 		bind:value={search}
-		class="text-medium h-10 w-48 rounded-full bg-slate-200 p-5  focus:outline-none"
+		class="text-medium h-10 w-48 rounded-full bg-slate-200 p-5 focus:outline-none"
 		autofocus={true}
 	/>
 	<button type="submit" class="absolute right-0 top-0 mr-4 mt-3">
 		<svg
-			class="h-4 w-4 fill-current hover:fill-slate-400 transition-all"
+			class="h-4 w-4 fill-current transition-all hover:fill-slate-400"
 			xmlns="http://www.w3.org/2000/svg"
 			xmlns:xlink="http://www.w3.org/1999/xlink"
 			version="1.1"

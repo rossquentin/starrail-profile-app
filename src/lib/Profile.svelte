@@ -1,15 +1,13 @@
 <script lang="ts">
-	import { page } from '$app/stores';
 	import ProfileChip from './ProfileChip.svelte';
 
-	$: player = <StarRail.Player>$page.data.response.player;
+	export let player: StarRail.Player;
 </script>
 
 <!-- Small screens or larger -->
 <div
 	class="hidden flex-row gap-4 rounded-3xl bg-slate-700 bg-opacity-40 p-6 shadow-[0_0_0.5rem_0_rgba(0,0,0,0.4)] sm:flex"
 >
-
 	<!-- Profile Picture -->
 	<div class="relative h-auto w-[75px]">
 		<img
@@ -42,12 +40,10 @@
 	</div>
 </div>
 
-
 <!-- Less than small screens -->
 <div
 	class="flex w-fit flex-col items-center gap-4 rounded-3xl bg-slate-700 bg-opacity-40 p-6 shadow-[0_0_0.5rem_0_rgba(0,0,0,0.4)] sm:hidden"
 >
-
 	<!-- Profile Picture -->
 	<img
 		class="w-[75px] rounded-full bg-slate-800 outline outline-4 outline-slate-500"
@@ -56,7 +52,7 @@
 	/>
 
 	<!-- Profile Info -->
-	<div class="flex flex-col p-0 gap-4">
+	<div class="flex flex-col gap-4 p-0">
 		<div class="flex flex-col">
 			<span class="text-center text-xl font-semibold text-white">{player.nickname}</span>
 

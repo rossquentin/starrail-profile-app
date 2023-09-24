@@ -37,9 +37,6 @@
 		}
 		return result;
 	}
-
-	
-
 </script>
 
 <div class="flex min-w-[400px] max-w-[400px] flex-col gap-2">
