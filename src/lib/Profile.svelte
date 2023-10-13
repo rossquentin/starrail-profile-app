@@ -34,7 +34,7 @@
 			<ProfileChip label={'Light Cones'} value={player.space_info.light_cone_count} />
 			<ProfileChip
 				label={'Memory of Chaos'}
-				value={player.space_info.challenge_data.maze_group_id}
+				value={player.space_info.memory_data.chaos_level}
 			/>
 		</div>
 	</div>

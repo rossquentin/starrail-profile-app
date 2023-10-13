@@ -16,6 +16,7 @@ declare namespace StarRail {
         signature: string;
         is_display: boolean;
         space_info: SpaceInfo;
+        memory_info: MemoryInfo;
     }
     export interface Avatar {
         id: string;
@@ -29,6 +30,7 @@ declare namespace StarRail {
     }
     export interface SpaceInfo {
         challenge_data: ChallengeData;
+        memory_data: MemoryData;
         pass_area_progress: number;
         light_cone_count: number;
         avatar_count: number;
@@ -38,6 +40,11 @@ declare namespace StarRail {
         maze_group_id: number;
         maze_group_index: number;
         pre_maze_group_index: number;
+    }
+    export interface MemoryData {
+        level: number;
+        chaos_id: number;
+        chaos_level: number;
     }
     export interface Character {
 			id: string;
