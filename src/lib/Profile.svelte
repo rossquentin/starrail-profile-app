@@ -6,7 +6,7 @@
 
 <!-- Small screens or larger -->
 <div
-	class="hidden flex-row gap-4 rounded-3xl bg-slate-700 bg-opacity-40 p-6 shadow-[0_0_0.5rem_0_rgba(0,0,0,0.4)] sm:flex"
+	class="flex-row gap-4 rounded-3xl bg-slate-700 bg-opacity-40 p-6 shadow-[0_0_0.5rem_0_rgba(0,0,0,0.4)] sm:flex"
 >
 	<!-- Profile Picture -->
 	<div class="relative h-auto w-[75px]">
