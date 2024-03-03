@@ -39,39 +39,3 @@
 		</div>
 	</div>
 </div>
-
-<!-- Less than small screens -->
-<div
-	class="flex w-fit flex-col items-center gap-4 rounded-3xl bg-slate-700 bg-opacity-40 p-6 shadow-[0_0_0.5rem_0_rgba(0,0,0,0.4)] sm:hidden"
->
-	<!-- Profile Picture -->
-	<img
-		class="w-[75px] rounded-full bg-slate-800 outline outline-4 outline-slate-500"
-		src="https://raw.githubusercontent.com/Mar-7th/StarRailRes/master/{player.avatar.icon}"
-		alt=""
-	/>
-
-	<!-- Profile Info -->
-	<div class="flex flex-col gap-4 p-0">
-		<div class="flex flex-col">
-			<span class="text-center text-xl font-semibold text-white">{player.nickname}</span>
-
-			<span class="text-center text-slate-400">{player.uid}</span>
-		</div>
-		<div class="grid grid-cols-2 justify-center gap-4">
-			<div class="grid grid-rows-3 justify-center gap-4">
-				<ProfileChip label={'Trailblaze Level'} value={player.level} />
-				<ProfileChip label={'Characters'} value={player.space_info.avatar_count} />
-				<ProfileChip label={'Achievements'} value={player.space_info.achievement_count} />
-			</div>
-			<div class="grid grid-rows-3 justify-center gap-4">
-				<ProfileChip label={'Equilibrium Level'} value={player.world_level} />
-				<ProfileChip label={'Light Cones'} value={player.space_info.light_cone_count} />
-				<ProfileChip
-					label={'Memory of Chaos'}
-					value={player.space_info.challenge_data.maze_group_index}
-				/>
-			</div>
-		</div>
-	</div>
-</div>
